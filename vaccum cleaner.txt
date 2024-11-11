@@ -1,0 +1,25 @@
+def vacuum_cleaner(grid):
+    def print_grid():
+        for row in grid:
+            print(' '.join(row))
+        print()
+
+    def move(r, c, direction):
+        if direction == 'up': r -= 1
+        elif direction == 'down': r += 1
+        elif direction == 'left': c -= 1
+        elif direction == 'right': c += 1
+        return r, c
+    
+    r, c = 0, 0
+    steps = ['right', 'down', 'left', 'up']
+    for step in steps:
+        grid[r][c] = 'D'  # 'D' for cleaned
+        print("Move",step)
+        print_grid()
+        r, c = move(r, c, step)
+        if not (0 <= r < 2 and 0 <= c < 2):
+            break
+
+grid = [['', ''], ['', '']]
+vacuum_cleaner(grid)
